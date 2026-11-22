@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import { parse } from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { env } from 'process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -11,9 +12,10 @@ const __dirname = dirname(__filename);
 export class ConfigService {
     private readonly envConfig: {[key:string]:string}
     constructor(){
-        const isDevelopmentEnv = process.env.NODE_ENV !== 'production'
+        const isDevelopmentEnv = process.env.NODE_ENV || 'development'
         if(isDevelopmentEnv){
-            const envFilePath= __dirname +'/../../.env.development'
+            const envFilePath= `${__dirname}/../../.env.${env}`
+            console.log("********",envFilePath)
             const existsPath = fs.existsSync(envFilePath)
             if(!existsPath){
                 console.log('.env.development no existe DEVELOPMENT')
