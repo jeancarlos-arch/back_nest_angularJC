@@ -23,7 +23,6 @@
     "migration:generate": "nest build && npx cross-env NODE_ENV=development typeorm migration:generate ./src/database/migrations/%npm_config_name% -d dist/typeorm.config.js",
     "migration:run": "nest build && npx cross-env NODE_ENV=development typeorm migration:run -d dist/typeorm.config.js",
     "migration:revert": "nest build && npx cross-env NODE_ENV=development typeorm migration:revert -d dist/typeorm.config.js"
-
   },
   "dependencies": {
     "@nestjs/common": "^12.0.1",
@@ -40,6 +39,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",
     "dotenv": "^18.0.10",
+    "mysql2": "^3.24.6",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "pg": "^8.23.1",

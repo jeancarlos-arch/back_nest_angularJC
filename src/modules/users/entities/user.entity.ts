@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Persona } from "../../persona/entities/persona.entity.js";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn, type Relation } from "typeorm";
 
 @Entity()
 export class User {
@@ -6,12 +7,14 @@ export class User {
     id: number;
 
     @Column()
-    name:string;
+    name: string;
 
     @Column()
-    mail:string;
+    mail: string;
 
     @Column()
-    password:string;
+    password: string;
 
+    @OneToOne(() => Persona, persona => persona.user, { cascade: true })
+    persona: Relation<Persona>;
 }
